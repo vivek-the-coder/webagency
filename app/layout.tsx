@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 
@@ -10,6 +10,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
 });
 
@@ -26,7 +31,7 @@ export default function RootLayout({
   return (
       <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${jakarta.variable} antialiased`}
       >
               <ThemeProvider
             attribute="class"
@@ -34,7 +39,15 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <div className="relative min-h-screen bg-background selection:bg-primary/30 selection:text-foreground">
+              {/* global decorative gradient blobs */}
+              <div className="pointer-events-none fixed -top-48 -left-48 w-[800px] h-[800px] bg-primary/20 blur-[150px] rounded-full z-0" />
+              <div className="pointer-events-none fixed -bottom-48 -right-48 w-[800px] h-[800px] bg-purple-500/10 blur-[150px] rounded-full z-0" />
+              
+              <div className="relative z-10">
+                {children}
+              </div>
+            </div>
           </ThemeProvider>
 
       </body>

@@ -1,3 +1,5 @@
+"use client";
+
 import React, {JSX} from "react";
 import {
   Card,
@@ -10,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { Container } from "@/components/ui/container";
+import { motion } from "framer-motion";
 
 type PricingTier = {
   name: string;
@@ -75,22 +78,28 @@ const pricingTiers: PricingTier[] = [
 
 export default function PricingCards(): JSX.Element {
   return (
-    <section id="pricing" className="py-32 px-4 transition-colors duration-300">
+    <section id="pricing" className="py-32 px-4 font-jakarta">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
       <Container>
         {/* Heading */}
         <div className="mb-20 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm text-primary">
-            <span className="font-medium">Pricing</span>
-            <span className="text-muted-foreground">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary bg-primary/20 px-4 py-1.5 text-sm text-foreground">
+            <span className="font-bold">Pricing</span>
+            <span className="text-foreground/70">
               Transparent & Value-Driven
             </span>
           </div>
 
-          <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50">
+          <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl text-foreground">
             Investment for Success
           </h2>
 
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed font-medium">
             Choose the package that best aligns with your digital goals. We deliver premium quality at every tier.
           </p>
         </div>
@@ -100,44 +109,44 @@ export default function PricingCards(): JSX.Element {
           {pricingTiers.map((tier) => (
             <Card
               key={tier.name}
-              className={`relative flex flex-col bg-muted/20 backdrop-blur-sm border-border/60 rounded-3xl overflow-hidden transition-all duration-300 hover:border-primary/30 hover:bg-muted/30 ${
+              className={`relative flex flex-col bg-foreground/5 backdrop-blur-xl border-none rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(66,122,118,0.1)] ${
                 tier.highlighted
-                  ? "border-primary/50 shadow-2xl shadow-primary/10 scale-105 z-10"
+                  ? "ring-2 ring-primary scale-105 z-10"
                   : ""
               }`}
             >
               {tier.badge && (
                 <div className="absolute top-0 right-0">
-                  <span className="inline-flex rounded-bl-3xl bg-primary px-6 py-2 text-xs font-bold uppercase tracking-widest text-primary-foreground">
+                  <span className="inline-flex rounded-bl-3xl bg-primary px-6 py-2 text-xs font-bold uppercase tracking-widest text-foreground">
                     {tier.badge}
                   </span>
                 </div>
               )}
 
               <CardHeader className="p-8">
-                <CardTitle className="text-2xl font-bold tracking-tight">{tier.name}</CardTitle>
+                <CardTitle className="text-2xl font-bold tracking-tight text-foreground">{tier.name}</CardTitle>
 
                 <div className="mt-6 flex items-baseline gap-1">
-                  <span className="text-5xl font-extrabold tracking-tighter">
+                  <span className="text-5xl font-extrabold tracking-tighter text-foreground">
                     {tier.price}
                   </span>
-                  <span className="text-muted-foreground text-lg">{tier.period}</span>
+                  <span className="text-foreground/50 text-lg font-medium">{tier.period}</span>
                 </div>
 
-                <CardDescription className="mt-4 text-base leading-relaxed">
+                <CardDescription className="mt-4 text-base leading-relaxed text-foreground/70 font-medium">
                   {tier.description}
                 </CardDescription>
               </CardHeader>
 
               <CardContent className="p-8 pt-0 flex-1">
-                <div className="h-px w-full bg-border/40 mb-8" />
+                <div className="h-px w-full bg-foreground/10 mb-8" />
                 <ul className="space-y-4">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <div className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                        <Check className="h-3.5 w-3.5 text-primary" strokeWidth={3} />
+                      <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary">
+                        <Check className="h-3.5 w-3.5 text-foreground" strokeWidth={3} />
                       </div>
-                      <span className="text-base text-muted-foreground">{feature}</span>
+                      <span className="text-base text-foreground/70 font-medium">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -147,10 +156,10 @@ export default function PricingCards(): JSX.Element {
                 <Button
                   className={`w-full h-14 rounded-2xl text-lg font-bold transition-all duration-300 ${
                     tier.highlighted 
-                    ? "bg-primary text-primary-foreground hover:scale-[1.02] shadow-xl shadow-primary/20" 
-                    : "bg-muted/50 hover:bg-muted/80"
+                    ? "bg-primary text-foreground hover:scale-[1.02] shadow-xl shadow-primary/20" 
+                    : "bg-foreground text-background hover:bg-foreground/90"
                   }`}
-                  variant={tier.highlighted ? "default" : "outline"}
+                  variant="default"
                 >
                   {tier.cta}
                 </Button>
@@ -159,6 +168,7 @@ export default function PricingCards(): JSX.Element {
           ))}
         </div>
       </Container>
+      </motion.div>
     </section>
   );
 }

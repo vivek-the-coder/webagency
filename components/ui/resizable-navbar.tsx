@@ -87,24 +87,22 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(10px)" : "none",
-        boxShadow: visible
-          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
-          : "none",
-        width: visible ? "40%" : "100%",
-        y: visible ? 20 : 0,
+        backdropFilter: visible ? "blur(20px)" : "none",
+        width: visible ? "45%" : "95%",
+        y: visible ? 20 : 10,
+        backgroundColor: visible ? "rgba(31, 58, 75, 0.05)" : "transparent",
+        borderColor: visible ? "rgba(31, 58, 75, 0.1)" : "transparent",
       }}
       transition={{
         type: "spring",
         stiffness: 200,
-        damping: 50,
+        damping: 40,
       }}
       style={{
-        minWidth: "800px",
+        minWidth: "700px",
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full px-4 py-2 flex border border-border bg-background/40 backdrop-blur-md transition-all duration-300 hover:bg-background/50",
-        visible && "bg-background/80 shadow-lg",
+        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full px-6 py-3 flex border transition-all duration-300 font-jakarta",
         className,
       )}
     >
@@ -120,7 +118,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-muted-foreground transition duration-200 hover:text-foreground lg:flex lg:space-x-2",
+        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-1 text-sm font-semibold transition duration-200 lg:flex",
         className,
       )}
     >
@@ -128,14 +126,15 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-4 py-2 text-foreground/70 transition-colors hover:text-foreground"
+          className="relative px-5 py-2 text-foreground/80 transition-colors hover:text-foreground"
           key={`link-${idx}`}
           href={item.link}
         >
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-muted"
+              className="absolute inset-0 h-full w-full rounded-full bg-primary/20"
+              transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
             />
           )}
           <span className="relative z-20">{item.name}</span>
@@ -149,24 +148,20 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(10px)" : "none",
-        boxShadow: visible
-          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
-          : "none",
-        width: visible ? "90%" : "100%",
-        paddingRight: visible ? "12px" : "0px",
-        paddingLeft: visible ? "12px" : "0px",
-        borderRadius: visible ? "4px" : "2rem",
-        y: visible ? 20 : 0,
+        backdropFilter: visible ? "blur(20px)" : "none",
+        width: visible ? "95%" : "100%",
+        borderRadius: "2rem",
+        y: visible ? 20 : 10,
+        backgroundColor: visible ? "rgba(31, 58, 75, 0.05)" : "transparent",
+        borderColor: visible ? "rgba(31, 58, 75, 0.1)" : "transparent",
       }}
       transition={{
         type: "spring",
         stiffness: 200,
-        damping: 50,
+        damping: 40,
       }}
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
-        visible && "bg-background/80",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between px-4 py-3 lg:hidden border border-transparent font-jakarta",
         className,
       )}
     >
@@ -234,16 +229,12 @@ export const NavbarLogo = () => {
   return (
     <a
       href="#"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-foreground"
+      className="relative z-20 flex items-center space-x-2 px-2 py-1 text-xl font-bold tracking-tighter text-foreground"
     >
-      <img
-        src="https://assets.aceternity.com/logo-dark.png"
-        alt="logo"
-        width={30}
-        height={30}
-        className="dark:invert-0 invert"
-      />
-      <span className="font-medium text-foreground">Startup</span>
+      <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+        <div className="h-4 w-4 rounded-full bg-foreground" />
+      </div>
+      <span className="font-bold">AGENCY</span>
     </a>
   );
 };

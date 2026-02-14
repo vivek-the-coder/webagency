@@ -1,6 +1,7 @@
 import { Hero } from "@/components/Hero"
 import { Navbar } from "@/components/Navbar"
-import { DefineUs } from "@/components/DefineUs"
+import { GlowingEffectDemo } from "@/components/DefineUs"
+import { AnimatedTestimonialsDemo } from "@/components/Testimonial"
 import { TechStack } from "@/components/tech-stack"
 // import { BentoSection } from "@/components/Grid"
 import PricingCards from "@/components/Pricing"
@@ -12,8 +13,9 @@ export default function Home() {
     <main className="bg-background min-h-screen">
       <Navbar />
       <Hero />
-      <DefineUs />
+      <GlowingEffectDemo />
       <TechStack />
+      <AnimatedTestimonialsDemo />
       {/* <BentoSection /> */}
       <PricingCards />
       <FAQ />

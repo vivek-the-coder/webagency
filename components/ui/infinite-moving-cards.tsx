@@ -86,14 +86,14 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-[180px] max-w-full shrink-0 rounded-2xl border border-border/50 bg-muted/20 backdrop-blur-sm px-6 py-4 md:w-[220px] transition-all duration-300 hover:border-primary/30 hover:bg-muted/30 group"
+            className="relative w-[250px] max-w-full shrink-0 rounded-3xl bg-foreground/5 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(66,122,118,0.05)] md:w-[300px] border-none group px-8 py-8 font-jakarta"
             key={item.name}
           >
-            <div className="flex items-center gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-background/50 border border-border/40 text-primary transition-transform duration-300 group-hover:scale-110">
+            <div className="flex flex-col items-center justify-center gap-8 text-center">
+              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-sm">
                 {item.icon}
               </div>
-              <span className="text-base font-bold tracking-tight text-foreground/80 group-hover:text-foreground transition-colors">
+              <span className="text-xl font-bold tracking-tight text-foreground transition-colors group-hover:text-primary">
                 {item.name}
               </span>
             </div>

@@ -1,59 +1,110 @@
-import React from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Container } from "@/components/ui/container";
-import { Brain, Rocket, ShieldCheck } from "lucide-react";
+"use client";
+
+import { Box, Lock, Search, Settings, Sparkles, Brain, Rocket, ShieldCheck, Cpu, Users, LineChart, Layers } from "lucide-react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const pillars = [
   {
     title: "Strategic Vision",
-    description: "We don't just build; we engineer solutions that align with your long-term business trajectory.",
-    icon: <Brain className="w-8 h-8 text-primary" />,
+    description:
+      "We engineer solutions aligned with your long-term roadmap, ensuring every feature contributes to measurable business growth.",
+    icon: Brain,
   },
   {
     title: "Rapid Execution",
-    description: "From concept to deployment, we leverage elite-tier tech stacks to ensure your product hits the market at speed.",
-    icon: <Rocket className="w-8 h-8 text-primary" />,
+    description:
+      "Our streamlined workflows and modern tooling let us move from idea to production at startup speed without sacrificing stability.",
+    icon: Rocket,
+  },
+
+  {
+    title: "Advanced Technology Stack",
+    description:
+      "From modern frontend frameworks to distributed backend systems, we use battle-tested technologies built for performance and scale.",
+    icon: Cpu,
   },
   {
-    title: "Uncompromising Quality",
-    description: "Every line of code is a reflection of our commitment to excellence, security, and scalability.",
-    icon: <ShieldCheck className="w-8 h-8 text-primary" />,
+    title: "User-Centered Design",
+    description:
+      "Every product decision starts with user behavior, ensuring intuitive interfaces that drive engagement and retention.",
+    icon: Users,
+  },
+  {
+    title: "Data-Driven Decisions",
+    description:
+      "We integrate analytics, performance metrics, and behavioral insights to continuously refine and optimize your product.",
+    icon: LineChart,
+  },
+  {
+    title: "Scalable Architecture",
+    description:
+      "Our systems are designed for growth — whether you're serving hundreds of users today or millions tomorrow.",
+    icon: Layers,
   },
 ];
 
-export function DefineUs() {
+import { motion } from "framer-motion";
+
+// ... existing imports
+
+export function GlowingEffectDemo() {
   return (
-    <section id="about" className="py-24 bg-background/50 relative overflow-hidden">
-      <Container>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pillars.map((pillar, idx) => (
-            <Card 
-              key={idx} 
-              className="bg-muted/20 backdrop-blur-md border-border/50 hover:border-primary/50 transition-all duration-300 group rounded-3xl"
-            >
-              <CardHeader className="pb-4">
-                <div className="mb-4 h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                  {pillar.icon}
-                </div>
-                <CardTitle className="text-2xl font-bold tracking-tight text-foreground">
-                  {pillar.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-lg leading-relaxed text-muted-foreground">
-                  {pillar.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+    <div className="py-20 relative font-jakarta">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-10 tracking-tight text-[#547792] dark:text-[#AAC4F5]">How we actually work</h2>
+        <ul className="mx-auto grid max-w-[1200px] grid-cols-1 gap-4 px-4 md:grid-cols-2 lg:grid-cols-3">
+          {pillars.map((pillar) => (
+            <GridItem
+              key={pillar.title}
+              icon={<pillar.icon className="h-4 w-4 text-black dark:text-neutral-400" />}
+              title={pillar.title}
+              description={pillar.description}
+            />
           ))}
-        </div>
-      </Container>
-    </section>
+        </ul>
+      </motion.div>
+    </div>
   );
 }
+
+interface GridItemProps {
+  icon: React.ReactNode;
+  title: string;
+  description: React.ReactNode;
+}
+
+const GridItem = ({ icon, title, description }: GridItemProps) => {
+  return (
+    <li className="min-h-[14rem] list-none">
+      <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01}
+        />
+        <div className="border-0.75 relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl p-6 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
+          <div className="relative flex flex-1 flex-col justify-between gap-3">
+            <div className="w-fit rounded-lg border border-gray-600 p-2">
+              {icon}
+            </div>
+            <div className="space-y-3">
+              <h3 className="-tracking-4 pt-0.5 font-sans text-xl/[1.375rem] font-semibold text-balance text-black md:text-2xl/[1.875rem] dark:text-white">
+                {title}
+              </h3>
+              <h2 className="font-sans text-sm/[1.125rem] text-black md:text-base/[1.375rem] dark:text-neutral-400 [&_b]:md:font-semibold [&_strong]:md:font-semibold">
+                {description}
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+};

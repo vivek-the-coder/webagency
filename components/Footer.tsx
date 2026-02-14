@@ -5,22 +5,12 @@ import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
 
 const Logo = () => (
-  <div className="flex items-center gap-2 group cursor-pointer">
-    <div className="h-10 w-10 bg-foreground rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6 text-background"
-      >
-        <path
-          d="M12 4L4 20H8L12 12L16 20H20L12 4Z"
-          fill="currentColor"
-        />
-      </svg>
+  <div className="flex items-center gap-2 group cursor-pointer font-jakarta">
+    <div className="h-10 w-10 bg-primary rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-sm">
+      <div className="h-5 w-5 rounded-full bg-foreground" />
     </div>
-    <span className="text-2xl font-bold tracking-tighter text-foreground">
-      DevStudio
+    <span className="text-xl font-bold tracking-tighter text-foreground">
+      DevStudios
     </span>
   </div>
 );
@@ -60,15 +50,15 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative w-full bg-background px-4 py-24 border-t border-border overflow-hidden transition-colors duration-300">
+    <footer className="relative w-full bg-background px-4 pt-52 pb-64 font-jakarta border-none overflow-hidden">
       {/* Background Large Text */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 pointer-events-none select-none opacity-[0.03] dark:opacity-[0.05]">
-        <h1 className="text-[20vw] font-bold tracking-tighter text-foreground whitespace-nowrap">
-          DevStudio
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-[5%] pointer-events-none select-none opacity-[0.05]">
+        <h1 className="text-[25vw] font-bold tracking-tighter text-foreground whitespace-nowrap leading-none">
+          AGENCY
         </h1>
       </div>
 
-      <Container className="relative z-10 flex flex-col lg:flex-row justify-between items-start gap-16 lg:gap-24">
+      <Container className="relative z-10 flex flex-col lg:flex-row justify-between items-start gap-20 lg:gap-40">
         <div className="flex flex-col items-start justify-start gap-4 mb-2 lg:mb-0">
           <Logo />
           {/* <p className="text-muted-foreground/60 text-sm tracking-tight mt-2">
@@ -76,18 +66,18 @@ export function Footer() {
           </p> */}
         </div>
 
-        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-12 lg:gap-x-24 w-full lg:w-auto">
+        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-x-12 gap-y-24 lg:gap-x-24 w-full lg:w-auto">
           {sections.map((section, idx) => (
-            <div key={idx} className="flex flex-col items-start justify-start gap-6">
+            <div key={idx} className="flex flex-col items-start justify-start gap-8">
               <h4 className="text-sm font-bold text-foreground tracking-widest uppercase">
                 {section.title}
               </h4>
-              <div className="flex flex-col items-start justify-start gap-4">
+              <div className="flex flex-col items-start justify-start gap-5">
                 {section.links.map((link, linkIdx) => (
                   <Link
                     key={linkIdx}
                     href={link.href}
-                    className="text-[15px] text-muted-foreground hover:text-foreground transition-colors duration-200"
+                    className="text-lg font-medium text-foreground/60 hover:text-primary transition-colors duration-300"
                   >
                     {link.label}
                   </Link>

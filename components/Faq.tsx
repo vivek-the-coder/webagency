@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Container } from "@/components/ui/container"
+import { motion } from "framer-motion"
 
 type FAQItem = {
   question: string
@@ -49,7 +50,13 @@ const faqs: FAQItem[] = [
 
 export default function FAQ(): JSX.Element {
   return (
-    <section id="faq" className="py-32 px-4 bg-background/50 border-t border-border/50">
+    <section id="faq" className="py-32 px-4 font-jakarta">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
       <Container>
         <div className="grid lg:grid-cols-[400px_1fr] gap-16 lg:gap-32">
           
@@ -58,8 +65,8 @@ export default function FAQ(): JSX.Element {
             <h2 className="text-5xl lg:text-8xl font-bold tracking-tighter text-foreground mb-6">
               FAQ
             </h2>
-            <p className="text-muted-foreground text-lg max-w-[300px] leading-relaxed">
-              Everything you need to know about working with DevStudio and our delivery process.
+            <p className="text-foreground/70 text-xl max-w-[300px] leading-relaxed font-medium">
+              Everything you need to know about working with AGENCY and our delivery process.
             </p>
           </div>
 
@@ -70,13 +77,13 @@ export default function FAQ(): JSX.Element {
                 <AccordionItem
                   key={faq.question}
                   value={`item-${index}`}
-                  className="border border-border/60 rounded-2xl px-4 bg-muted/20 backdrop-blur-sm hover:border-primary/30 hover:bg-muted/30 transition-all duration-300 group overflow-hidden"
+                  className="border-none rounded-2xl px-6 bg-foreground/5 transition-all duration-300 group overflow-hidden mb-4 hover:shadow-[0_10px_20px_rgba(66,122,118,0.05)]"
                 >
-                  <AccordionTrigger className="text-left text-xl lg:text-2xl font-bold py-4 hover:no-underline transition-all group-hover:pl-2">
+                  <AccordionTrigger className="text-left text-xl lg:text-2xl font-bold py-6 hover:no-underline transition-all group-hover:text-primary">
                     {faq.question}
                   </AccordionTrigger>
 
-                  <AccordionContent className="text-muted-foreground text-lg leading-relaxed pb-4 pl-2">
+                  <AccordionContent className="text-foreground/70 text-lg leading-relaxed pb-6 font-medium">
                     {faq.answer}
                   </AccordionContent>
 
@@ -87,6 +94,7 @@ export default function FAQ(): JSX.Element {
 
         </div>
       </Container>
+      </motion.div>
     </section>
   )
 }
