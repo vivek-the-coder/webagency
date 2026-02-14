@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 
 export function Hero() {
@@ -57,7 +57,7 @@ const LinePath = ({
   scrollYProgress,
 }: {
   className: string;
-  scrollYProgress: { get: () => number };
+  scrollYProgress: MotionValue<number>;
 }) => {
   const pathLength = useTransform(scrollYProgress, [0, 0.15, 0.5, 1], [0.5, 0.65, 0.85, 1]);
 
@@ -77,10 +77,8 @@ const LinePath = ({
         stroke="#C2F84F"
         strokeWidth="20"
         strokeLinecap="round"
-        style={{
-          pathLength,
-          strokeDashoffset: useTransform(pathLength, (value) => 1 - value),
-        }}
+        pathLength={pathLength}
+        style={{}}
       />
     </svg>
   );
