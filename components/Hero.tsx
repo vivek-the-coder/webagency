@@ -1,6 +1,6 @@
 "use client";
 
-import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
+import { MotionValue, motion, useScroll, useTransform } from "motion/react";
 import React, { useRef } from "react";
 
 export function Hero() {
