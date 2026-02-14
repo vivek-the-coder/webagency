@@ -50,7 +50,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative w-full bg-background px-4 pt-52 pb-64 font-jakarta border-none overflow-hidden">
+    <footer className="relative w-full bg-background px-4 pt-24 sm:pt-36 md:pt-52 pb-24 sm:pb-40 md:pb-64 font-jakarta border-none overflow-hidden">
       {/* Background Large Text */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-[5%] pointer-events-none select-none opacity-[0.05]">
         <h1 className="text-[25vw] font-bold tracking-tighter text-foreground whitespace-nowrap leading-none">
@@ -66,7 +66,7 @@ export function Footer() {
           </p> */}
         </div>
 
-        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-x-12 gap-y-24 lg:gap-x-24 w-full lg:w-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-16 sm:gap-x-12 sm:gap-y-24 lg:gap-x-24 w-full lg:w-auto">
           {sections.map((section, idx) => (
             <div key={idx} className="flex flex-col items-start justify-start gap-8">
               <h4 className="text-sm font-bold text-foreground tracking-widest uppercase">

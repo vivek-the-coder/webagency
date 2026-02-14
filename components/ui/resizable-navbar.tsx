@@ -98,11 +98,8 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         stiffness: 200,
         damping: 40,
       }}
-      style={{
-        minWidth: "700px",
-      }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full px-6 py-3 flex border transition-all duration-300 font-jakarta",
+        "relative z-[60] mx-auto hidden min-w-0 w-full max-w-7xl lg:min-w-[700px] lg:flex flex-row items-center justify-between self-start rounded-full px-6 py-3 border transition-all duration-300 font-jakarta",
         className,
       )}
     >
@@ -196,11 +193,12 @@ export const MobileNavMenu = ({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-background px-4 py-8 shadow-xl border border-border",
+            "absolute left-0 right-0 top-full mt-2 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-2xl bg-background/95 backdrop-blur-xl px-4 py-6 shadow-xl border border-border overflow-hidden",
             className,
           )}
         >
@@ -218,10 +216,19 @@ export const MobileNavToggle = ({
   isOpen: boolean;
   onClick: () => void;
 }) => {
-  return isOpen ? (
-    <IconX className="text-foreground" onClick={onClick} />
-  ) : (
-    <IconMenu2 className="text-foreground" onClick={onClick} />
+  return (
+    <button
+      type="button"
+      aria-label={isOpen ? "Close menu" : "Open menu"}
+      onClick={onClick}
+      className="p-2 -mr-2 touch-manipulation rounded-lg hover:bg-foreground/5 active:bg-foreground/10 transition-colors"
+    >
+      {isOpen ? (
+        <IconX className="h-6 w-6 text-foreground" />
+      ) : (
+        <IconMenu2 className="h-6 w-6 text-foreground" />
+      )}
+    </button>
   );
 };
 

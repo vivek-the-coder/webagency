@@ -78,16 +78,16 @@ const pricingTiers: PricingTier[] = [
 
 export default function PricingCards(): JSX.Element {
   return (
-    <section id="pricing" className="py-32 px-4 font-jakarta">
+    <section id="pricing" className="py-16 sm:py-24 md:py-32 px-4 font-jakarta">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.15, margin: "0px 0px -80px 0px" }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       >
       <Container>
         {/* Heading */}
-        <div className="mb-20 text-center">
+        <div className="mb-12 md:mb-20 text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary bg-primary/20 px-4 py-1.5 text-sm text-foreground">
             <span className="font-bold">Pricing</span>
             <span className="text-foreground/70">
@@ -95,7 +95,7 @@ export default function PricingCards(): JSX.Element {
             </span>
           </div>
 
-          <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl text-foreground">
+          <h2 className="mb-4 md:mb-6 text-3xl font-bold tracking-tight sm:text-4xl md:text-6xl lg:text-7xl text-foreground">
             Investment for Success
           </h2>
 
@@ -111,7 +111,7 @@ export default function PricingCards(): JSX.Element {
               key={tier.name}
               className={`relative flex flex-col bg-foreground/5 backdrop-blur-xl border-none rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(66,122,118,0.1)] ${
                 tier.highlighted
-                  ? "ring-2 ring-primary scale-105 z-10"
+                  ? "ring-2 ring-primary md:scale-105 z-10"
                   : ""
               }`}
             >

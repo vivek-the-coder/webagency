@@ -86,14 +86,14 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-[250px] max-w-full shrink-0 rounded-3xl bg-foreground/5 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(66,122,118,0.05)] md:w-[300px] border-none group px-8 py-8 font-jakarta"
+            className="relative w-[200px] sm:w-[240px] md:w-[300px] shrink-0 rounded-2xl md:rounded-3xl bg-foreground/5 transition-transform duration-500 hover:-translate-y-2 active:scale-[0.98] md:hover:shadow-[0_20px_40px_rgba(66,122,118,0.05)] border-none group px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-8 font-jakarta"
             key={item.name}
           >
-            <div className="flex flex-col items-center justify-center gap-8 text-center">
-              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-sm">
+            <div className="flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8 text-center">
+              <div className="flex h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 shrink-0 items-center justify-center rounded-xl md:rounded-2xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-sm">
                 {item.icon}
               </div>
-              <span className="text-xl font-bold tracking-tight text-foreground transition-colors group-hover:text-primary">
+              <span className="text-base sm:text-lg md:text-xl font-bold tracking-tight text-foreground transition-colors group-hover:text-primary">
                 {item.name}
               </span>
             </div>

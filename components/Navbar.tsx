@@ -47,21 +47,23 @@ export function Navbar() {
         <MobileNavMenu
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
-          className="bg-background/95 backdrop-blur-xl border-t border-border"
+          className="bg-background/95 backdrop-blur-xl border border-border"
         >
-          <div className="flex flex-col gap-6 py-8">
+          <div className="flex flex-col gap-5 py-2">
             {navItems.map((item, idx) => (
               <a
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-lg font-semibold text-muted-foreground hover:text-foreground transition-colors py-2 touch-manipulation"
               >
-                <span>{item.name}</span>
+                {item.name}
               </a>
             ))}
           </div>
-          <div className="flex w-full flex-col gap-4 mt-auto pb-8"></div>
+          <div className="flex w-full flex-col gap-4 mt-auto pt-4 pb-2 border-t border-border">
+            <ThemeToggle />
+          </div>
         </MobileNavMenu>
       </MobileNav>
     </NavbarContainer>

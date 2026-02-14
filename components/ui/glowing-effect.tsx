@@ -102,9 +102,16 @@ const GlowingEffect = memo(
 
       const handleScroll = () => handleMove();
       const handlePointerMove = (e: PointerEvent) => handleMove(e);
+      const handleTouch = (e: TouchEvent) => {
+        const touch = e.touches[0];
+        if (touch) handleMove({ x: touch.clientX, y: touch.clientY });
+      };
 
       window.addEventListener("scroll", handleScroll, { passive: true });
       document.body.addEventListener("pointermove", handlePointerMove, {
+        passive: true,
+      });
+      document.body.addEventListener("touchmove", handleTouch, {
         passive: true,
       });
 
@@ -114,6 +121,7 @@ const GlowingEffect = memo(
         }
         window.removeEventListener("scroll", handleScroll);
         document.body.removeEventListener("pointermove", handlePointerMove);
+        document.body.removeEventListener("touchmove", handleTouch);
       };
     }, [handleMove, disabled]);
 

@@ -43,12 +43,12 @@ export function AnimatedTestimonialsDemo() {
   ];
 
   return (
-    <div className="py-20 relative font-jakarta">
+    <div className="py-16 sm:py-20 relative font-jakarta">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.15, margin: "0px 0px -80px 0px" }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       >
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-10 tracking-tight text-[#547792] dark:text-[#AAC4F5]">What our clients say</h2>
         <AnimatedTestimonials testimonials={testimonials} />

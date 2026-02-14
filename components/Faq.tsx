@@ -50,22 +50,22 @@ const faqs: FAQItem[] = [
 
 export default function FAQ(): JSX.Element {
   return (
-    <section id="faq" className="py-32 px-4 font-jakarta">
+    <section id="faq" className="py-16 sm:py-24 md:py-32 px-4 font-jakarta">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.15, margin: "0px 0px -80px 0px" }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       >
       <Container>
-        <div className="grid lg:grid-cols-[400px_1fr] gap-16 lg:gap-32">
+        <div className="grid lg:grid-cols-[400px_1fr] gap-10 sm:gap-16 lg:gap-32">
           
           {/* Left side */}
           <div className="lg:sticky lg:top-32 lg:self-start">
-            <h2 className="text-5xl lg:text-8xl font-bold tracking-tighter text-foreground mb-6">
+            <h2 className="text-4xl sm:text-5xl lg:text-8xl font-bold tracking-tighter text-foreground mb-4 md:mb-6">
               FAQ
             </h2>
-            <p className="text-foreground/70 text-xl max-w-[300px] leading-relaxed font-medium">
+            <p className="text-foreground/70 text-base sm:text-xl max-w-[300px] leading-relaxed font-medium">
               Everything you need to know about working with AGENCY and our delivery process.
             </p>
           </div>
@@ -79,7 +79,7 @@ export default function FAQ(): JSX.Element {
                   value={`item-${index}`}
                   className="border-none rounded-2xl px-6 bg-foreground/5 transition-all duration-300 group overflow-hidden mb-4 hover:shadow-[0_10px_20px_rgba(66,122,118,0.05)]"
                 >
-                  <AccordionTrigger className="text-left text-xl lg:text-2xl font-bold py-6 hover:no-underline transition-all group-hover:text-primary">
+                  <AccordionTrigger className="text-left text-base sm:text-xl lg:text-2xl font-bold py-4 sm:py-6 hover:no-underline transition-all group-hover:text-primary">
                     {faq.question}
                   </AccordionTrigger>
 
