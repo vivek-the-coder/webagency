@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero"
+import { Skiper19 } from "@/components/Good-Animation"
 import { Navbar } from "@/components/Navbar"
 import { GlowingEffectDemo } from "@/components/DefineUs"
 import { AnimatedTestimonialsDemo } from "@/components/Testimonial"
@@ -7,18 +8,27 @@ import { TechStack } from "@/components/tech-stack"
 import PricingCards from "@/components/Pricing"
 import FAQ from "@/components/Faq"
 import { Footer } from "@/components/Footer"
+import { ContactSection } from "@/components/Contact"
 
 export default function Home() {
   return (
     <main className="bg-background min-h-screen">
       <Navbar />
-      <Hero />
+      <div className="flex flex-col">
+        <div className="order-2 md:order-1">
+          <Hero />
+        </div>
+        <div className="order-1 md:order-2">
+          <Skiper19 />
+        </div>
+      </div>
       <GlowingEffectDemo />
       <TechStack />
       <AnimatedTestimonialsDemo />
       {/* <BentoSection /> */}
       <PricingCards />
       <FAQ />
+      <ContactSection />
       <Footer />
     </main>
   )

@@ -2,6 +2,7 @@
 
 import { MotionValue, motion, useScroll, useTransform } from "motion/react";
 import React, { useRef } from "react";
+import { Highlighter } from "./ui/highlighter";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -13,23 +14,27 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative mx-auto flex h-[280vh] sm:h-[320vh] md:h-[350vh] w-full flex-col items-center overflow-x-hidden bg-background px-4 text-foreground font-jakarta"
+      className="relative mx-auto flex h-[140vh] sm:h-[220vh] md:h-[350vh] w-full flex-col items-center overflow-x-hidden bg-background px-4 text-foreground font-jakarta"
     >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="mt-24 sm:mt-32 md:mt-48 relative flex w-full max-w-4xl flex-col items-center justify-center gap-6 sm:gap-8 text-center z-10"
+        className="mt-[38px] sm:mt-32 md:mt-24 relative flex w-full max-w-4xl flex-col items-center justify-center gap-4 sm:gap-6 text-center z-10"
       >
-        <h1 className="relative z-10 text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-semibold tracking-tighter leading-[1.05] px-1">
-          Modern Digital <br /> Solutions for Saas.
+        <h1 className="relative z-10 text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-semibold tracking-tighter leading-[1.1] px-1">
+          Modern Digital
+          <br /> Solutions for  {" "}
+          <Highlighter action="highlight" color="#00e1ffff" >
+             Saas
+          </Highlighter>{" "}
         </h1>
         <p className="relative z-10 max-w-2xl text-base sm:text-lg md:text-xl font-medium text-foreground/70 px-2">
           We combine strategy, speed, and engineering excellence to build
           digital products that scale with your ambition.
         </p>
 
-        <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 relative z-10 w-full sm:w-auto">
+        <div className="mt-2 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 relative z-10 w-full sm:w-auto">
           <button className="w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-foreground text-background font-bold text-base sm:text-lg hover:scale-[1.02] active:scale-[0.98] transition-transform duration-300 shadow-xl touch-manipulation">
             Explore Our Work
           </button>
@@ -38,16 +43,16 @@ export function Hero() {
           </button>
         </div>
 
-        <div className="absolute -right-[15%] sm:-right-[10%] -top-[5%] sm:-top-[10%] z-0 w-[130%] sm:w-[120%] lg:w-full max-w-[1400px] h-[60vh] sm:h-auto pointer-events-none opacity-30 sm:opacity-40 lg:opacity-100 min-h-[320px]">
+        <div className="absolute -right-[20%] sm:-right-[10%] -top-[0%] sm:-top-[5%] z-0 w-[140%] sm:w-[120%] lg:w-full max-w-[1400px] h-[70vh] sm:h-auto pointer-events-none opacity-40 sm:opacity-50 lg:opacity-100 min-h-[350px]">
           <LinePath
-            className="w-full h-full object-contain object-left-top"
+            className="md:mt-48 w-full h-full object-contain object-left-top"
             scrollYProgress={scrollYProgress}
           />
         </div>
       </motion.div>
 
       {/* spacer to allow for scroll progress visual */}
-      <div className="h-[180vh] sm:h-[200vh] w-full shrink-0" />
+      <div className="h-[50vh] sm:h-[100vh] md:h-[200vh] w-full shrink-0" />
     </section>
   );
 }
@@ -59,7 +64,7 @@ const LinePath = ({
   className: string;
   scrollYProgress: MotionValue<number>;
 }) => {
-  const pathLength = useTransform(scrollYProgress, [0, 0.15, 0.5, 1], [0.5, 0.65, 0.85, 1]);
+  const pathLength = useTransform(scrollYProgress, [0, 0.2, 0.5, 1], [0, 0.3, 0.6, 1]);
 
   return (
     <svg

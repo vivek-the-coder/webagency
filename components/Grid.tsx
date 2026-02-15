@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import { Pointer } from "@/components/ui/pointer";
 import {
   IconArrowWaveRightUp,
   IconBoxAlignRightFilled,
@@ -16,28 +17,30 @@ import {
 export function BentoSection() {
   return (
     <section id="deliverables" className="py-24 px-4 transition-colors duration-300">
-      <Container>
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50">
-            What We Deliver
-          </h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-            We build future-proof digital products that combine technical excellence with artistic vision to drive measurable business growth.
-          </p>
-        </div>
-        <BentoGrid>
-          {items.map((item, i) => (
-            <BentoGridItem
-              key={i}
-              title={item.title}
-              description={item.description}
-              header={item.header}
-              icon={item.icon}
-              className={i === 0 || i === 3 || i === 6 ? "md:col-span-2" : ""}
-            />
-          ))}
-        </BentoGrid>
-      </Container>
+      <Pointer>
+        <Container>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50">
+              What We Deliver
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+              We build future-proof digital products that combine technical excellence with artistic vision to drive measurable business growth.
+            </p>
+          </div>
+          <BentoGrid>
+            {items.map((item, i) => (
+              <BentoGridItem
+                key={i}
+                title={item.title}
+                description={item.description}
+                header={item.header}
+                icon={item.icon}
+                className={i === 0 || i === 3 || i === 6 ? "md:col-span-2" : ""}
+              />
+            ))}
+          </BentoGrid>
+        </Container>
+      </Pointer>
     </section>
   );
 }
