@@ -5,9 +5,10 @@ import React, { useRef } from "react";
 
 const Skiper19 = () => {
   const ref = useRef<HTMLDivElement>(null);
+  // Start animating only when this section enters view (i.e. after Hero has finished)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end end"],
+    offset: ["start end", "end end"],
   });
 
   return (
@@ -27,11 +28,11 @@ const Skiper19 = () => {
         </div>
 
         {/* Content overlay */}
-        <div className="mt-32 sm:mt-40 md:mt-48 relative flex w-full max-w-4xl flex-col items-center justify-center gap-4 sm:gap-6 text-center z-10">
-          <h1 className="relative z-10 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-semibold tracking-tighter leading-[1.1] px-1">
+        <div className="ml-20 sm:ml-32 md:ml-70 mt-32 sm:mt-40 md:mt-48 relative flex w-full max-w-4xl flex-col items-center justify-center gap-4 sm:gap-6 text-center z-10">
+          <h1 className="ml-20 sm:ml-32 md:ml-70 relative z-10 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-semibold tracking-tighter leading-[1.1] px-1">
             Your Vision, <br /> Our Execution
           </h1>
-          <p className="relative z-10 max-w-2xl text-base sm:text-lg md:text-xl font-medium text-foreground/70 px-2">
+          <p className=" ml-20 sm:ml-32 md:ml-70 relative z-10 max-w-2xl text-base sm:text-lg md:text-xl font-medium text-foreground/70 px-2">
             From concept to launch, we transform your ideas into scalable digital products that drive real business results.
           </p>
         </div>
@@ -49,8 +50,8 @@ const LinePath = ({
   className: string;
   scrollYProgress: MotionValue<number>;
 }) => {
-  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const strokeDashoffset = useTransform(pathLength, [0, 1], [1, 0]);
+  // Same curve as Hero: draw the path as user scrolls through this section
+  const pathLength = useTransform(scrollYProgress, [0, 0.2, 0.5, 1], [0, 0.3, 0.6, 1]);
 
   return (
     <svg
@@ -68,8 +69,8 @@ const LinePath = ({
         stroke="#C2F84F"
         strokeWidth="20"
         strokeLinecap="round"
-        strokeDasharray="1"
-        strokeDashoffset={strokeDashoffset}
+        pathLength={pathLength}
+        style={{}}
       />
     </svg>
   );

@@ -10,7 +10,8 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 
 export function Navbar() {
@@ -30,7 +31,12 @@ export function Navbar() {
         <NavbarLogo />
         <NavItems items={navItems} />
         <div className="flex items-center gap-4">
-          <ThemeToggle />
+          <AnimatedThemeToggler
+            className={cn(
+              "relative flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-300 hover:bg-white/10 hover:border-white/20"
+            )}
+            aria-label="Toggle theme"
+          />
         </div>
       </NavBody>
 
@@ -62,7 +68,12 @@ export function Navbar() {
             ))}
           </div>
           <div className="flex w-full flex-col gap-4 mt-auto pt-4 pb-2 border-t border-border">
-            <ThemeToggle />
+            <AnimatedThemeToggler
+              className={cn(
+                "relative flex h-9 w-9 items-center justify-center rounded-full border border-border bg-muted/50 transition-all duration-300 hover:bg-muted"
+              )}
+              aria-label="Toggle theme"
+            />
           </div>
         </MobileNavMenu>
       </MobileNav>

@@ -14,33 +14,42 @@ import {
   IconTableColumn,
 } from "@tabler/icons-react";
 
+function DeliverablesPointer() {
+  return (
+    <Pointer>
+      <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-primary bg-primary/20 shadow-lg ring-2 ring-primary/30 backdrop-blur-sm">
+        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+      </div>
+    </Pointer>
+  )
+}
+
 export function BentoSection() {
   return (
-    <section id="deliverables" className="py-24 px-4 transition-colors duration-300">
-      <Pointer>
-        <Container>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50">
-              What We Deliver
-            </h2>
-            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-              We build future-proof digital products that combine technical excellence with artistic vision to drive measurable business growth.
-            </p>
-          </div>
-          <BentoGrid>
-            {items.map((item, i) => (
-              <BentoGridItem
-                key={i}
-                title={item.title}
-                description={item.description}
-                header={item.header}
-                icon={item.icon}
-                className={i === 0 || i === 3 || i === 6 ? "md:col-span-2" : ""}
-              />
-            ))}
-          </BentoGrid>
-        </Container>
-      </Pointer>
+    <section id="deliverables" className="py-24 px-4 transition-colors duration-300 relative">
+      <DeliverablesPointer />
+      <Container>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50">
+            What We Deliver
+          </h2>
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+            We build future-proof digital products that combine technical excellence with artistic vision to drive measurable business growth.
+          </p>
+        </div>
+        <BentoGrid>
+          {items.map((item, i) => (
+            <BentoGridItem
+              key={i}
+              title={item.title}
+              description={item.description}
+              header={item.header}
+              icon={item.icon}
+              className={i === 0 || i === 3 || i === 6 ? "md:col-span-2" : ""}
+            />
+          ))}
+        </BentoGrid>
+      </Container>
     </section>
   );
 }

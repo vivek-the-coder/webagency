@@ -1,7 +1,74 @@
 "use client";
 
-import { Box, Lock, Search, Settings, Sparkles, Brain, Rocket, ShieldCheck, Cpu, Users, LineChart, Layers } from "lucide-react";
+import React from "react";
+import { Brain, Cpu, Layers, LineChart, Rocket, Users } from "lucide-react";
+import { motion } from "motion/react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { Pointer } from "@/components/ui/pointer";
+
+function AnimatedHeartPointer() {
+  return (
+    <motion.div
+      animate={{
+        scale: [0.8, 1, 0.8],
+        rotate: [0, 5, -5, 0],
+      }}
+      transition={{
+        duration: 1.5,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    >
+      <svg
+        width="40"
+        height="40"
+        viewBox="0 0 40 40"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="text-pink-600"
+      >
+        <motion.path
+          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+          fill="currentColor"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{
+            duration: 0.8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </svg>
+    </motion.div>
+  );
+}
+
+function CustomShapePointer() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="12" cy="12" r="10" className="fill-purple-500" />
+      <circle cx="12" cy="12" r="5" className="fill-white" />
+    </svg>
+  );
+}
+
+type PointerConfig =
+  | { content: React.ReactNode }
+  | { className: string };
+
+const cardPointers: PointerConfig[] = [
+  { content: <AnimatedHeartPointer key="0" /> },
+  { className: "fill-amber-500" },
+  { content: <CustomShapePointer key="2" /> },
+  { className: "fill-sky-500" },
+  { content: <div key="4" className="text-2xl">👆</div> },
+  { className: "fill-emerald-500" },
+];
 
 const pillars = [
   {
@@ -43,10 +110,6 @@ const pillars = [
   },
 ];
 
-import { motion } from "framer-motion";
-
-// ... existing imports
-
 export function GlowingEffectDemo() {
   return (
     <div className="mt-10 relative font-jakarta">
@@ -58,9 +121,10 @@ export function GlowingEffectDemo() {
       >
         <h2 className="text-4xl md:text-5xl font-bold text-center ml-[170px] mb-10  tracking-tight text-[#547792] dark:text-[#AAC4F5]">How we actually work</h2>
         <ul className="mx-auto grid max-w-[1200px] grid-cols-1 gap-4 px-4 md:grid-cols-2 lg:grid-cols-3">
-          {pillars.map((pillar) => (
+          {pillars.map((pillar, index) => (
             <GridItem
               key={pillar.title}
+              pointerIndex={index}
               icon={<pillar.icon className="h-4 w-4 text-black dark:text-neutral-400" />}
               title={pillar.title}
               description={pillar.description}
@@ -73,14 +137,20 @@ export function GlowingEffectDemo() {
 }
 
 interface GridItemProps {
+  pointerIndex: number;
   icon: React.ReactNode;
   title: string;
   description: React.ReactNode;
 }
 
-const GridItem = ({ icon, title, description }: GridItemProps) => {
+const GridItem = ({ pointerIndex, icon, title, description }: GridItemProps) => {
+  const pointerConfig = cardPointers[pointerIndex];
+  const pointerClassName = "className" in pointerConfig ? pointerConfig.className : undefined;
+  const pointerContent = "content" in pointerConfig ? pointerConfig.content : undefined;
+
   return (
-    <li className="min-h-[14rem] list-none">
+    <li className="min-h-[14rem] list-none relative">
+      <Pointer className={pointerClassName}>{pointerContent}</Pointer>
       <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
         <GlowingEffect
           spread={40}
