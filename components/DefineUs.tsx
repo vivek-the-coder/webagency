@@ -5,6 +5,7 @@ import { Brain, Cpu, Layers, LineChart, Rocket, Users } from "lucide-react";
 import { motion } from "motion/react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { Pointer } from "@/components/ui/pointer";
+import { Container } from "@/components/ui/container";
 
 function AnimatedHeartPointer() {
   return (
@@ -119,18 +120,20 @@ export function GlowingEffectDemo() {
         viewport={{ once: true, amount: 0.15, margin: "0px 0px -80px 0px" }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-center ml-[170px] mb-10  tracking-tight text-[#547792] dark:text-[#AAC4F5]">How we actually work</h2>
-        <ul className="mx-auto grid max-w-[1200px] grid-cols-1 gap-4 px-4 md:grid-cols-2 lg:grid-cols-3">
-          {pillars.map((pillar, index) => (
-            <GridItem
-              key={pillar.title}
-              pointerIndex={index}
-              icon={<pillar.icon className="h-4 w-4 text-black dark:text-neutral-400" />}
-              title={pillar.title}
-              description={pillar.description}
-            />
-          ))}
-        </ul>
+        <Container>
+          <h2 className="text-4xl md:text-5xl font-bold text-center md:ml-[170px] mb-10 tracking-tight text-[#547792] dark:text-[#AAC4F5]">How we actually work</h2>
+          <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {pillars.map((pillar, index) => (
+              <GridItem
+                key={pillar.title}
+                pointerIndex={index}
+                icon={<pillar.icon className="h-4 w-4 text-black dark:text-neutral-400" />}
+                title={pillar.title}
+                description={pillar.description}
+              />
+            ))}
+          </ul>
+        </Container>
       </motion.div>
     </div>
   );

@@ -15,12 +15,8 @@ export default function Home() {
     <main className="bg-background min-h-screen">
       <Navbar />
       <div className="flex flex-col">
-        <div className="order-2 md:order-1">
-          <Hero />
-        </div>
-        <div className="order-1 md:order-2">
-          <Skiper19 />
-        </div>
+        <Hero />
+        <Skiper19 />
       </div>
       <GlowingEffectDemo />
       <TechStack />

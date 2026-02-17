@@ -15,7 +15,7 @@ const Skiper19 = () => {
     <>
       <section
         ref={ref}
-        className="relative mx-auto flex h-[350vh] sm:h-[450vh] md:h-[350vh] xl:h-[500vh] w-full max-w-full flex-col items-center overflow-x-hidden overflow-y-visible bg-background px-4 text-foreground font-jakarta"
+        className="relative mx-auto flex h-[200vh] sm:h-[180vh] md:h-[350vh] xl:h-[500vh] w-full max-w-full flex-col items-center overflow-x-hidden overflow-y-visible bg-background px-4 text-foreground font-jakarta"
       >
         {/* Stroke SVG – visible on all viewports, scroll-driven; completes when section end hits viewport top */}
         <div className="absolute inset-0 z-0 w-full min-h-0 pointer-events-none overflow-visible">
@@ -28,11 +28,11 @@ const Skiper19 = () => {
         </div>
 
         {/* Content overlay */}
-        <div className="ml-20 sm:ml-32 md:ml-70 mt-32 sm:mt-40 md:mt-48 relative flex w-full max-w-4xl flex-col items-center justify-center gap-4 sm:gap-6 text-center z-10">
-          <h1 className="ml-20 sm:ml-32 md:ml-70 relative z-10 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-semibold tracking-tighter leading-[1.1] px-1">
+        <div className="mt-32 sm:mt-40 md:mt-48 relative flex w-full max-w-4xl flex-col items-center justify-center gap-4 sm:gap-6 text-center z-10 px-4">
+          <h1 className="relative z-10 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-semibold tracking-tighter leading-[1.1] px-1">
             Your Vision, <br /> Our Execution
           </h1>
-          <p className=" ml-20 sm:ml-32 md:ml-70 relative z-10 max-w-2xl text-base sm:text-lg md:text-xl font-medium text-foreground/70 px-2">
+          <p className="relative z-10 max-w-2xl text-base sm:text-lg md:text-xl font-medium text-foreground/70 px-2">
             From concept to launch, we transform your ideas into scalable digital products that drive real business results.
           </p>
         </div>

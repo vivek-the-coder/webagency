@@ -66,7 +66,7 @@ export function ContactSection() {
               </LabelInputContainer>
 
               <button
-                className="group/btn relative block h-12 w-full rounded-lg bg-foreground text-background font-semibold text-base hover:opacity-90 transition-opacity shadow-lg"
+                className="group/btn relative block h-12 w-full rounded-lg bg-foreground text-background font-semibold text-base hover:opacity-90 active:scale-[0.98] transition-all shadow-lg touch-manipulation"
                 type="submit"
               >
                 Send Message
@@ -81,7 +81,7 @@ export function ContactSection() {
               <h3 className="text-2xl font-bold text-foreground mb-6">
                 Get in touch
               </h3>
-              
+
               <div className="space-y-6">
                 <ContactInfo
                   icon={<IconMail className="h-5 w-5" />}
