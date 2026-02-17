@@ -54,7 +54,7 @@ export function Footer() {
       {/* Background Large Text */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-[5%] pointer-events-none select-none opacity-[0.05]">
         <h1 className="text-[25vw] font-bold tracking-tighter text-foreground whitespace-nowrap leading-none">
-          AGENCY
+          STALUX
         </h1>
       </div>
 

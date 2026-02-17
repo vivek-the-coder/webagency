@@ -241,7 +241,7 @@ export const NavbarLogo = () => {
       <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
         <div className="h-4 w-4 rounded-full bg-foreground" />
       </div>
-      <span className="font-bold">AGENCY</span>
+      <span className="font-bold">Stalux</span>
     </a>
   );
 };
